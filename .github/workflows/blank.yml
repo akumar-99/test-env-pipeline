@@ -16,21 +16,13 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Set environment for branch
-        run: echo prod
+        run: echo "GLCOUD_PROJECT=main" >> "$GITHUB_ENV"
         if: github.ref == 'refs/heads/main'
       - name: Set environment for branch
-        run: echo test
+        run: echo "GLCOUD_PROJECT=test" >> "$GITHUB_ENV"
         if: github.ref == 'refs/heads/test'
-#           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-#               echo "GLCOUD_PROJECT=my-project-stg" >> "$GITHUB_ENV"
-#               echo "VERCEL_TARGET=staging" >> "$GITHUB_ENV"
-#           else if
-#               echo "GLCOUD_PROJECT=my-project-prd" >> "$GITHUB_ENV"
-#               echo "VERCEL_TARGET=production" >> "$GITHUB_ENV"
-#           fi
 
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: echo $GLCOUD_PROJECT
       - name: Run a multi-line script
-        run: |
-          env
+        run: env
