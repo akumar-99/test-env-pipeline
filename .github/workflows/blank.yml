@@ -15,15 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-#       - name: Set environment for branch
-#         run: |
-#           if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
-#               echo "GLCOUD_PROJECT=my-project-stg" >> "$GITHUB_ENV"
-#               echo "VERCEL_TARGET=staging" >> "$GITHUB_ENV"
-#           else if
-#               echo "GLCOUD_PROJECT=my-project-prd" >> "$GITHUB_ENV"
-#               echo "VERCEL_TARGET=production" >> "$GITHUB_ENV"
-#           fi
+      - name: Set environment for branch
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/main' ]]; then
+              echo "GLCOUD_PROJECT=my-project-stg" >> "$GITHUB_ENV"
+              echo "VERCEL_TARGET=staging" >> "$GITHUB_ENV"
+          else if
+              echo "GLCOUD_PROJECT=my-project-prd" >> "$GITHUB_ENV"
+              echo "VERCEL_TARGET=production" >> "$GITHUB_ENV"
+          fi
       - name: Run a one-line script
         run: echo Hello, world!
       - name: Run a multi-line script
